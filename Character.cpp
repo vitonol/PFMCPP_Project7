@@ -1,9 +1,10 @@
 #include "Character.h"
 #include <iostream>
 #include <vector>
-
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
+#include "Utility.h"
+#include <time.h> 
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
     hitPoints(hp),
@@ -13,6 +14,9 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
+
+    helpfulItems = makeHelpfulItems(getRandomNumber() );
+    defensiveItems = makeDefensiveItems(getRandomNumber() );
 }
 
 void Character::attack( Character& other )
@@ -87,7 +91,7 @@ int Character::takeDamage(int damage)
 }
 
 
-#include <assert>
+//#include <assert>
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
@@ -98,7 +102,7 @@ void Character::attackInternal(Character& other)
             b) your stats are boosted 10%
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
-        assert(false);
+        //assert(false);
         std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
     }
 }
