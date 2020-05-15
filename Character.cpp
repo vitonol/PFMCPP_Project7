@@ -4,7 +4,9 @@
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
 #include "Utility.h"
-#include <time.h> 
+#include <time.h>
+
+
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
     hitPoints(hp),
@@ -14,9 +16,6 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
-
-    helpfulItems = makeHelpfulItems(getRandomNumber() );
-    defensiveItems = makeDefensiveItems(getRandomNumber() );
 }
 
 void Character::attack( Character& other )
@@ -95,7 +94,7 @@ int Character::takeDamage(int damage)
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
-    {
+    {   
         /*
         When you defeat another Character: 
             a) your stats are restored to their initial value if they are lower than it.
@@ -103,6 +102,7 @@ void Character::attackInternal(Character& other)
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
         //assert(false);
+        
         std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
     }
 }
@@ -110,7 +110,7 @@ void Character::attackInternal(Character& other)
 void Character::printStats()
 {
     std::cout << getName() << "'s stats: " << std::endl;
-    assert(false);
+    //assert(false);
     /*
     make your getStats() use a function from the Utility.h
     */
