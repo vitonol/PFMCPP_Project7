@@ -12,8 +12,7 @@
 std::vector<std::unique_ptr<Item>> makeHelpfulItems(int num)
 {
     std::vector<std::unique_ptr<Item>> items;
-    srand(time(NULL));
-    num = (rand() %10) + 1;
+    
     
     while( num-- >= 0 )
     {
@@ -27,8 +26,8 @@ std::vector<std::unique_ptr<Item>> makeHelpfulItems(int num)
 std::vector<std::unique_ptr<Item>> makeDefensiveItems(int num)
 {
     std::vector<std::unique_ptr<Item>> items;
-    srand(time(NULL));
-    num = (rand() %10) + 1;
+    //srand(time(NULL));
+    //num = (rand() %10) + 1;
     
     while( num-- >= 0 )
     {

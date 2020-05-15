@@ -5,7 +5,8 @@
 #include "HelpfulItem.h"
 #include "Utility.h"
 #include <time.h>
-
+#include <cstdlib>
+#include <ctime>
 
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
@@ -16,6 +17,28 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
+
+    std::vector<int> v1;
+    for (int i = 1; i <=70; i++)
+    {
+        srand(time(0)); 
+        int b = (rand() %10) + 1;  
+        v1.push_back (b); 
+    }   
+    
+    int randNumb1 = rand() % v1.size();
+    int randNumb2 = rand() % v1.size();
+        
+         //std::cout <<randNumb << std::endl;
+
+    //srand(time(NULL));
+    //randNumb = (rand() %10) + 1;
+
+    makeHelpfulItems(randNumb1);
+    makeDefensiveItems(randNumb2);
+
+    
+
 }
 
 void Character::attack( Character& other )
