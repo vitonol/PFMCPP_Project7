@@ -7,7 +7,7 @@ DragonSlayer::DragonSlayer(std::string name_, int hitPoints, int armor): Charact
     attackItem.reset(new AttackItem);
 }
 
-const sts::string& DragonSlayer::getName() {return name;}
+const std::string& DragonSlayer::getName() {return name;}
 
 void DragonSlayer::attack(Character& other)
 {
