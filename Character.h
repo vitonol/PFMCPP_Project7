@@ -22,7 +22,7 @@ struct Character
     
     virtual void attack( Character& other );
     void defend();
-    
+        
     void help( Character& other );
     
     int takeDamage(int damage);
@@ -54,6 +54,7 @@ struct Character
     }
 
     void printStats();
+    void resetStats(int& value, int& initValue);
 
 protected:
     std::vector<std::unique_ptr<Item>> defensiveItems;

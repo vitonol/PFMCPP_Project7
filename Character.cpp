@@ -109,6 +109,15 @@ int Character::takeDamage(int damage)
     return hitPoints;
 }
 
+void Character::resetStats( int& value, int& initValue )
+    {
+        if(value < initValue)
+        {
+            value = initValue;
+        }
+            value *=1.1f;
+            initValue = value;
+    } 
 
 //#include <assert>
 void Character::attackInternal(Character& other)
@@ -122,28 +131,11 @@ void Character::attackInternal(Character& other)
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
         //assert(false);
-        if(hitPoints < *initialHitPoints) 
-        {
-            hitPoints = *initialHitPoints;
-        }
-        if(armor < *initialArmorLevel)
-        {
-            armor = *initialArmorLevel;
-        }
-        if(attackDamage < *initialAttackDamage)
-        {
-            attackDamage = *initialAttackDamage;
-        }
+    `````
+        resetStats(hitPoints, *initialHitPoints);
+        resetStats(armor, *initialArmorLevel);
+        resetStats(attackDamage, *initialAttackDamage);
 
-        hitPoints *= 1.1;
-        armor *= 1.1;
-        attackDamage *= 1.1;
-
-
-        *initialHitPoints = hitPoints;
-        *initialArmorLevel = armor;
-        *initialAttackDamage = attackDamage;
-        
         std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
     }
 }
