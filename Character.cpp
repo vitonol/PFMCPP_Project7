@@ -18,24 +18,21 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
 
+    /*
     std::vector<int> v1;
     for (int i = 1; i <=70; i++)
     {
-        srand(time(0)); 
+        srand(time(nullptr)); 
         int b = (rand() %10) + 1;  
         v1.push_back (b); 
     }   
     
     int randNumb1 = rand() % v1.size();
     int randNumb2 = rand() % v1.size();
-        
-         //std::cout <<randNumb << std::endl;
+    */
 
-    //srand(time(NULL));
-    //randNumb = (rand() %10) + 1;
-
-    makeHelpfulItems(randNumb1);
-    makeDefensiveItems(randNumb2);
+    makeHelpfulItems(2);
+    makeDefensiveItems(3);
 
     
 
@@ -125,6 +122,28 @@ void Character::attackInternal(Character& other)
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
         //assert(false);
+        if(hitPoints < *initialHitPoints) 
+        {
+            hitPoints = *initialHitPoints;
+        }
+        if(armor < *initialArmorLevel)
+        {
+            armor = *initialArmorLevel;
+        }
+        if(attackDamage < *initialAttackDamage)
+        {
+            attackDamage = *initialAttackDamage;
+        }
+
+        hitPoints *= 1.1;
+        armor *= 1.1;
+        attackDamage *= 1.1;
+
+
+        *initialHitPoints = hitPoints;
+        *initialArmorLevel = armor;
+        *initialAttackDamage = attackDamage;
+        
         
         std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
     }
@@ -142,3 +161,4 @@ void Character::printStats()
     std::cout << std::endl;
     std::cout << std::endl;
 }
+
