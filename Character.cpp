@@ -17,25 +17,25 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
-
     /*
     std::vector<int> v1;
     for (int i = 1; i <=70; i++)
     {
-        srand(time(nullptr)); 
+        srand(time(0)); 
         int b = (rand() %10) + 1;  
         v1.push_back (b); 
     }   
     
     int randNumb1 = rand() % v1.size();
     int randNumb2 = rand() % v1.size();
+        
+         //std::cout <<randNumb << std::endl;
+
+    //srand(time(NULL));
+    //randNumb = (rand() %10) + 1;
     */
-
-    makeHelpfulItems(2);
-    makeDefensiveItems(3);
-
-    
-
+    makeHelpfulItems(3);
+    makeDefensiveItems(2);
 }
 
 void Character::attack( Character& other )
@@ -144,7 +144,6 @@ void Character::attackInternal(Character& other)
         *initialArmorLevel = armor;
         *initialAttackDamage = attackDamage;
         
-        
         std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
     }
 }
@@ -161,4 +160,3 @@ void Character::printStats()
     std::cout << std::endl;
     std::cout << std::endl;
 }
-
