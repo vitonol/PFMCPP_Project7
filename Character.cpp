@@ -1,12 +1,8 @@
 #include "Character.h"
 #include <iostream>
-#include <vector>
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
 #include "Utility.h"
-#include <time.h>
-#include <cstdlib>
-#include <ctime>
 
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
@@ -17,25 +13,9 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
-    /*
-    std::vector<int> v1;
-    for (int i = 1; i <=70; i++)
-    {
-        srand(time(0)); 
-        int b = (rand() %10) + 1;  
-        v1.push_back (b); 
-    }   
     
-    int randNumb1 = rand() % v1.size();
-    int randNumb2 = rand() % v1.size();
-        
-         //std::cout <<randNumb << std::endl;
-
-    //srand(time(NULL));
-    //randNumb = (rand() %10) + 1;
-    */
-    makeHelpfulItems(3);
-    makeDefensiveItems(2);
+    helpfulItems = makeHelpfulItems(2);
+    defensiveItems = makeDefensiveItems(1);
 }
 
 void Character::attack( Character& other )
@@ -109,14 +89,14 @@ int Character::takeDamage(int damage)
     return hitPoints;
 }
 
-void Character::resetStats( int& value, int& initValue )
+void Character::resetStats(int& value, int& initValue)
     {
         if(value < initValue)
         {
             value = initValue;
         }
-            value *=1.1f;
-            initValue = value;
+         value *=1.1f;
+        initValue = value;
     } 
 
 //#include <assert>
@@ -131,7 +111,6 @@ void Character::attackInternal(Character& other)
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
         //assert(false);
-    `````
         resetStats(hitPoints, *initialHitPoints);
         resetStats(armor, *initialArmorLevel);
         resetStats(attackDamage, *initialAttackDamage);
