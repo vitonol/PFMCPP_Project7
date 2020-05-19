@@ -99,7 +99,8 @@ void Character::resetStats(int& value, int& initValue)
         initValue = value;
     } 
 
-//#include <assert>
+#define NDEBUG
+#include <cassert>
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
@@ -110,7 +111,7 @@ void Character::attackInternal(Character& other)
             b) your stats are boosted 10%
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
-        //assert(false);
+        assert(false);
         resetStats(hitPoints, *initialHitPoints);
         resetStats(armor, *initialArmorLevel);
         resetStats(attackDamage, *initialAttackDamage);
