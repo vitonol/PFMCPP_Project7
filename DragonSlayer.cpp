@@ -4,6 +4,8 @@
 
 DragonSlayer::DragonSlayer(std::string name_, int hitPoints, int armor): Character (hitPoints, armor, 4), name(name_)
 {
+    helpfulItems = makeHelpfulItems(2);
+    defensiveItems = makeDefensiveItems(3);
     attackItem.reset(new AttackItem);
 }
 

@@ -13,9 +13,6 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
-    
-    helpfulItems = makeHelpfulItems(2);
-    defensiveItems = makeDefensiveItems(1);
 }
 
 void Character::attack( Character& other )
@@ -95,12 +92,12 @@ void Character::resetStats(int& value, int& initValue)
         {
             value = initValue;
         }
-         value *=1.1f;
+        value *=1.1f;
         initValue = value;
     } 
 
-#define NDEBUG
-#include <cassert>
+//#define NDEBUG
+//#include <cassert>
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
@@ -111,7 +108,7 @@ void Character::attackInternal(Character& other)
             b) your stats are boosted 10%
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
-        assert(false);
+        //assert(false);
         resetStats(hitPoints, *initialHitPoints);
         resetStats(armor, *initialArmorLevel);
         resetStats(attackDamage, *initialAttackDamage);
